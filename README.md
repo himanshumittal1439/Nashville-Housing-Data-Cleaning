@@ -64,20 +64,18 @@ The dataset contains housing records including property details, sale informatio
 - MySQL
 - DBeaver (for query execution and data inspection)
 
----
+## 📂 Project Structure
 
-## 📁 Project Structure
-📦 Nashville-Housing-Data-Cleaning
-┣ 📂 data
-┃ ┗ nashville_housing.csv
-┣ 📜 data_cleaning.sql
-┗ 📜 README.md
-L 📂 screenshots
-   L before_cleaning.png
-   L after_cleaning.png
-
-
----
+```bash
+Nashville-Housing-Data-Cleaning
+├── data
+│   └── nashville_housing.csv
+├── data_cleaning.sql
+├── README.md
+└── screenshots
+    ├── before_cleaning.png
+    └── after_cleaning.png
+```
 
 ## 🚀 Key Learnings
 - Handling real-world messy datasets
