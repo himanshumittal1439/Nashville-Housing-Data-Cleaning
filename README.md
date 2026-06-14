@@ -102,19 +102,7 @@ Nashville-Housing-Data-Cleaning/
     └── after_cleaning.png
 ```
 
----
 
-## 📸 Results
-
-### Before Cleaning
-
-![Before Cleaning](screenshots/before_cleaning.png)
-
-### After Cleaning
-
-![After Cleaning](screenshots/after_cleaning.png)
-
----
 
 ## 🚀 Key Learnings
 
