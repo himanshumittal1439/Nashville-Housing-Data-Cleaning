@@ -1,90 +1,131 @@
-# Nashville Housing Data Cleaning (MySQL)
+# 🏠 Nashville Housing Data Cleaning (MySQL)
 
 ## 📊 Project Overview
-This project focuses on cleaning and transforming a raw housing dataset using MySQL.  
-The goal was to prepare messy real-world data into a structured and analysis-ready format.
 
-The dataset contains housing records including property details, sale information, and ownership data.
+This project demonstrates a complete data cleaning workflow in **MySQL** using the Nashville Housing dataset. The objective was to transform raw housing data into a clean, structured, and analysis-ready dataset by handling missing values, standardizing formats, removing duplicates, and optimizing the table structure.
+
+The dataset contains housing records, including property details, sales information, and ownership data.
 
 ---
 
-## 🧹 Data Cleaning Steps Performed
+## 📂 Dataset
+
+* Source: Nashville Housing Dataset
+* Records: Housing sales and property information
+* Format: CSV
+* Database: MySQL
+
+---
+
+## 🧹 Data Cleaning Tasks
 
 ### 1. Standardized Date Format
-- Converted `saledate` from text format (e.g., "Month Day, Year") into MySQL date format using `STR_TO_DATE()`.
 
----
+* Converted `SaleDate` from text format into MySQL `DATE` format using `STR_TO_DATE()`.
 
 ### 2. Handled Missing Values
-- Identified missing values stored as empty strings (`''`) instead of NULL.
-- Replaced missing `propertyaddress` values using self-join based on `parcelid`.
 
----
+* Identified missing values stored as empty strings (`''`).
+* Replaced missing `PropertyAddress` values using a self-join on `ParcelID`.
 
 ### 3. Split Address Columns
-- Split `propertyaddress` into:
-  - Address
-  - City
-- Split `owneraddress` into:
-  - Address
-  - City
-  - State
-- Used string functions like `SUBSTRING_INDEX()` and `TRIM()`.
 
----
+**Property Address**
+
+* Address
+* City
+
+**Owner Address**
+
+* Address
+* City
+* State
+
+Used:
+
+* `SUBSTRING_INDEX()`
+* `TRIM()`
 
 ### 4. Standardized Categorical Values
-- Converted `soldasvacant` values:
-  - 'Y' → 'Yes'
-  - 'N' → 'No'
 
----
+Converted:
+
+* `Y` → `Yes`
+* `N` → `No`
+
+in the `SoldAsVacant` column.
 
 ### 5. Removed Duplicate Records
-- Used `ROW_NUMBER()` window function to identify duplicates.
-- Duplicates were defined based on:
-  - parcelid
-  - propertyaddress
-  - saleprice
-  - saledate
-  - legalreference
-- Kept the first occurrence and removed duplicates.
 
----
+Used the `ROW_NUMBER()` window function to identify duplicate records based on:
+
+* `ParcelID`
+* `PropertyAddress`
+* `SalePrice`
+* `SaleDate`
+* `LegalReference`
+
+Retained the first occurrence and removed duplicates.
 
 ### 6. Dropped Unused Columns
-- Removed unnecessary columns to clean the final dataset:
-  - owneraddress
-  - taxdistrict
-  - propertyaddress
+
+Removed unnecessary columns:
+
+* `OwnerAddress`
+* `TaxDistrict`
+* `PropertyAddress`
 
 ---
 
 ## 🛠️ Tools Used
-- MySQL
-- DBeaver (for query execution and data inspection)
 
-## 📂 Project Structure
+* MySQL
+* DBeaver
+* SQL Window Functions
+* String Manipulation Functions
 
-```bash
-Nashville-Housing-Data-Cleaning
-├── data
+---
+
+## 📁 Project Structure
+
+```text
+Nashville-Housing-Data-Cleaning/
+│
+├── data/
 │   └── nashville_housing.csv
+│
 ├── data_cleaning.sql
 ├── README.md
-└── screenshots
+│
+└── screenshots/
     ├── before_cleaning.png
     └── after_cleaning.png
 ```
 
-## 🚀 Key Learnings
-- Handling real-world messy datasets
-- Difference between NULL and empty strings
-- SQL string manipulation techniques
-- Window functions for duplicate detection
-- End-to-end data cleaning workflow
+---
+
+## 📸 Results
+
+### Before Cleaning
+
+![Before Cleaning](screenshots/before_cleaning.png)
+
+### After Cleaning
+
+![After Cleaning](screenshots/after_cleaning.png)
 
 ---
 
-## 📌 Notes
-This project is part of SQL practice to improve data cleaning and transformation skills using real-world datasets.
+## 🚀 Key Learnings
+
+* Cleaning real-world datasets using SQL
+* Handling NULL values and empty strings
+* Data transformation with string functions
+* Duplicate detection using window functions
+* Building a complete data-cleaning workflow
+
+---
+
+## 📌 Conclusion
+
+This project strengthened my practical SQL skills by applying data-cleaning techniques commonly used in real-world data analytics workflows. The final dataset is structured, consistent, and ready for further analysis or visualization.
